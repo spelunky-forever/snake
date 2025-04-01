@@ -4,15 +4,15 @@
 #include <windows.h> 
 #include <conio.h>
 
-//¸É¤B ±Nsystem("CLS")§ï¬°printf("\033[0;0H\033[2J") ®Ä¯à´£¤É 
+//è£œä¸ å°‡system("CLS")æ”¹ç‚ºprintf("\033[0;0H\033[2J") æ•ˆèƒ½æå‡ 
 
-// ÀY: @ ¨­Åé:o ÂI®y¼Ğ:.  ­¹ª«: ? 
+// é ­: @ èº«é«”:o é»åº§æ¨™:.  é£Ÿç‰©: ? 
 int i,j,S_idxb,S_idxs,A_idxb,A_idxs,len=2,END=0,RE=0,Hard=0;
-int head=1;   //head ¥k1 ¥ª2 ¤W4 ¤U5
-char ground[9][9]; //³õ¦a 
-int jd_list[81][2];  //§PÂ_§À¤Ú¤U¤@¨B­n©¹­ş¸Ì¨«¡A¦]¬°§À¤Ú·|©¹¤W¤@­Ó¨­Åéªº¦ì¸m¨«¡A©Ò¥H³Ğ³y9*9 ªº2d°}¦C 
+int head=1;   //head å³1 å·¦2 ä¸Š4 ä¸‹5
+char ground[9][9]; //å ´åœ° 
+int jd_list[81][2];  //åˆ¤æ–·å°¾å·´ä¸‹ä¸€æ­¥è¦å¾€å“ªè£¡èµ°ï¼Œå› ç‚ºå°¾å·´æœƒå¾€ä¸Šä¸€å€‹èº«é«”çš„ä½ç½®èµ°ï¼Œæ‰€ä»¥å‰µé€ 9*9 çš„2dé™£åˆ— 
 
-void color(short x){     //ÃC¦â®ÄªG 
+void color(short x){     //é¡è‰²æ•ˆæœ 
 	if ((x>=0) && (x<=15)){
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), x);
 	}
@@ -21,7 +21,7 @@ void color(short x){     //ÃC¦â®ÄªG
 	}
 }
 
-void op(){    //¿é¥X¨ç¦¡ 
+void op(){    //è¼¸å‡ºå‡½å¼ 
 	printf("\n");
 	for(i=0;i<=8;i++){
 		for(j=0;j<=8;j++){
@@ -39,21 +39,21 @@ void op(){    //¿é¥X¨ç¦¡
 	}	
 }
 
-int smaller(){          //OÁäÁY¤p 
+int smaller(){          //Oéµç¸®å° 
 	if (len<=2){
-	    color(7); printf("ªø«×¤£¨¬¡AµLªkÁY¤p\n");
-	    Sleep(300);    //¼È°±¹B°µ0.3¬í¡A¤£·|ª½±µ²M°£ 
+	    color(7); printf("é•·åº¦ä¸è¶³ï¼Œç„¡æ³•ç¸®å°\n");
+	    Sleep(300);    //æš«åœé‹åš0.3ç§’ï¼Œä¸æœƒç›´æ¥æ¸…é™¤ 
 		RE=1;
 		return 0;
 	}
-	ground[jd_list[len-1][0]][jd_list[len-1][1]]='.';         //±N§À¤Ú¥h°£ 
+	ground[jd_list[len-1][0]][jd_list[len-1][1]]='.';         //å°‡å°¾å·´å»é™¤ 
 	jd_list[len-1][0]=-1; jd_list[len-1][1]=-1;
 	len-=1;
 }
 
-int ran_plus(int N,int try_time){       //¬°ÀH¾÷ªºN»¼°j¡A±±¨î§À¤Úªº¥[ªø¤è¦V(¸Ó·s¦ì¸mÀ³¬°ÂI®y¼Ğ)¡A¥B¦pªG¸Õ¤F¶W¹L100¦¸ÁÙ¥¼¦¨¥\«h¥[ªø¥¢±Ñ 
+int ran_plus(int N,int try_time){       //ç‚ºéš¨æ©Ÿçš„Néè¿´ï¼Œæ§åˆ¶å°¾å·´çš„åŠ é•·æ–¹å‘(è©²æ–°ä½ç½®æ‡‰ç‚ºé»åº§æ¨™)ï¼Œä¸”å¦‚æœè©¦äº†è¶…é100æ¬¡é‚„æœªæˆåŠŸå‰‡åŠ é•·å¤±æ•— 
 	if (try_time>100){
-	    color(7); printf("¥[ªø¥¢±Ñ\n");
+	    color(7); printf("åŠ é•·å¤±æ•—\n");
 	    Sleep(300);
 		RE=1;
 		return 0; 
@@ -104,9 +104,9 @@ int ran_plus(int N,int try_time){       //¬°ÀH¾÷ªºN»¼°j¡A±±¨î§À¤Úªº¥[ªø¤è¦V(¸Ó·s
 	}
 }
 
-int longer(){   //ªø«×¶W¹L15®É«h¤£¯à¥[ªø 
+int longer(){   //é•·åº¦è¶…é15æ™‚å‰‡ä¸èƒ½åŠ é•· 
 	if (len>=15){
-	    color(7); printf("ªø«×¹Lªø¡AµLªk¥[ªø\n");
+	    color(7); printf("é•·åº¦éé•·ï¼Œç„¡æ³•åŠ é•·\n");
 	    Sleep(300);
 		RE=1;
 		return 0;
@@ -115,7 +115,7 @@ int longer(){   //ªø«×¶W¹L15®É«h¤£¯à¥[ªø
 	return 0;
 }
 
-void swap(){    //¨C²¾°Ê¤@¨B®É¡A¦b§Àºİ¥[¤W²¾°Êªº³Ì·s¦ì¸m¡A¦A²¾¦Ü³Ì«e­±¡A¨Ï·U·sªº¦ì¸m¦b·U«e­±¡A¨Ï·UÂÂªº¦ì¸m¦b·U«á­± 
+void swap(){    //æ¯ç§»å‹•ä¸€æ­¥æ™‚ï¼Œåœ¨å°¾ç«¯åŠ ä¸Šç§»å‹•çš„æœ€æ–°ä½ç½®ï¼Œå†ç§»è‡³æœ€å‰é¢ï¼Œä½¿æ„ˆæ–°çš„ä½ç½®åœ¨æ„ˆå‰é¢ï¼Œä½¿æ„ˆèˆŠçš„ä½ç½®åœ¨æ„ˆå¾Œé¢ 
 	int x,y,m,n;
 	for(i=len-1;i>0;i--){
 		x=jd_list[i][0]; y=jd_list[i][1]; m=jd_list[i-1][0]; n=jd_list[i-1][1];
@@ -124,7 +124,7 @@ void swap(){    //¨C²¾°Ê¤@¨B®É¡A¦b§Àºİ¥[¤W²¾°Êªº³Ì·s¦ì¸m¡A¦A²¾¦Ü³Ì«e­±¡A¨Ï·U·sªº
 	}
 }
 
-int ran_run(int N,int try_time){    //»P¤W­zªºÀH¾÷»¼°j¤j²¤¬Û¦P¡A¾A¥Î©ó§Y±N³Q³D¦Y±¼®É¡A°µ¥Xªº°{Á×°Ê§@ 
+int ran_run(int N,int try_time){    //èˆ‡ä¸Šè¿°çš„éš¨æ©Ÿéè¿´å¤§ç•¥ç›¸åŒï¼Œé©ç”¨æ–¼å³å°‡è¢«è›‡åƒæ‰æ™‚ï¼Œåšå‡ºçš„é–ƒé¿å‹•ä½œ 
 	if (try_time>100){
 		return 0;
 	}
@@ -174,7 +174,7 @@ int ran_run(int N,int try_time){    //»P¤W­zªºÀH¾÷»¼°j¤j²¤¬Û¦P¡A¾A¥Î©ó§Y±N³Q³D¦Y
 	}
 }
 
-int ran_walk(int N,int try_time){      //»P¤W­zªºÀH¾÷»¼°j¤j²¤¬Û¦P¡A¾A¥Î©ó¨S¦³«Â¯Ù®Éªº¦ÛµM²¾°Ê 
+int ran_walk(int N,int try_time){      //èˆ‡ä¸Šè¿°çš„éš¨æ©Ÿéè¿´å¤§ç•¥ç›¸åŒï¼Œé©ç”¨æ–¼æ²’æœ‰å¨è„…æ™‚çš„è‡ªç„¶ç§»å‹• 
 	if (try_time>100){
 		return 0;
 	}
@@ -224,7 +224,7 @@ int ran_walk(int N,int try_time){      //»P¤W­zªºÀH¾÷»¼°j¤j²¤¬Û¦P¡A¾A¥Î©ó¨S¦³«Â¯
 	}
 }
 
-int escape(){   //§PÂ_­n¥Î°kªºÁÙ¬O¦ÛµM²¾°Ê 
+int escape(){   //åˆ¤æ–·è¦ç”¨é€ƒçš„é‚„æ˜¯è‡ªç„¶ç§»å‹• 
 	if (ground[S_idxb][S_idxs]=='?'){
 		ran_run(rand()%4,1);
 	}
@@ -233,7 +233,7 @@ int escape(){   //§PÂ_­n¥Î°kªºÁÙ¬O¦ÛµM²¾°Ê
 	}
 }
 
-int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡ 
+int move(char M){     //ç§»å‹•çš„å„é …å‡½å¼ 
 	int z;
 	if ((M=='W') || (M=='w')){
 		z=4;
@@ -256,13 +256,13 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 		return 0;
 	}
 	else{
-		color(7); printf("¿é¤J¿ù»~ ½Ğ­«·s¿é¤J\n");
+		color(7); printf("è¼¸å…¥éŒ¯èª¤ è«‹é‡æ–°è¼¸å…¥\n");
 	    Sleep(300);
 		RE=1;
 		return 0;
 	}
-	if (abs(z-head)==1){     //¤W»P¤U ¥ª»P¥k«ê¦n®t1¡A¥i±N¥|­Óif§PÂ_¦¡¿@ÁY¦¨¤@­Ó 
-		color(7); printf("¤£¯à­Ë¨®¼Ú~ ½Ğ­«·s¿é¤J\n");
+	if (abs(z-head)==1){     //ä¸Šèˆ‡ä¸‹ å·¦èˆ‡å³æ°å¥½å·®1ï¼Œå¯å°‡å››å€‹ifåˆ¤æ–·å¼æ¿ƒç¸®æˆä¸€å€‹ 
+		color(7); printf("ä¸èƒ½å€’è»Šæ­~ è«‹é‡æ–°è¼¸å…¥\n");
 		Sleep(300);
 		RE=1;
 		return 0;
@@ -274,9 +274,9 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 		if (S_idxb==-1){
 			S_idxb=8;
 		}
-		if ((len>=10) && (Hard==0)){     //ªø«×¤j©ó10§Y°k¶] 
+		if ((len>=10) && (Hard==0)){     //é•·åº¦å¤§æ–¼10å³é€ƒè·‘ 
 		   Hard=1;
-		   color(7); printf("\n¶}©l°k¶]~\n");
+		   color(7); printf("\né–‹å§‹é€ƒè·‘~\n");
 		   Sleep(300);
 		   escape();
 	    }
@@ -291,7 +291,7 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 		}
 		if ((len>=10) && (Hard==0)){
 		   Hard=1;
-		   color(7); printf("\n¶}©l°k¶]~\n");
+		   color(7); printf("\né–‹å§‹é€ƒè·‘~\n");
 		   Sleep(300);
 		   escape();
 	    }
@@ -306,7 +306,7 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 		}
 		if ((len>=10) && (Hard==0)){
 		   Hard=1;
-		   color(7); printf("\n¶}©l°k¶]~\n");
+		   color(7); printf("\né–‹å§‹é€ƒè·‘~\n");
 		   Sleep(300);
 		   escape();
 	    }
@@ -321,7 +321,7 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 		}
 		if ((len>=10) && (Hard==0)){
 		   Hard=1;
-		   color(7); printf("\n¶}©l°k¶]~\n");
+		   color(7); printf("\né–‹å§‹é€ƒè·‘~\n");
 		   Sleep(300);
 		   escape();
 	    }
@@ -333,15 +333,15 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 	if (ground[S_idxb][S_idxs]=='?'){
  	    ground[jd_list[len-1][0]][jd_list[len-1][1]]='o';
  	    ground[S_idxb][S_idxs]='@';
-		printf("\033[H\033[2J");     //±Nµe­±²MªÅ¡A¥i¨Ï¹CÀ¸¸û¬yºZ 
- 	    color(7); printf("\n¥Ø«e¤À¼Æ:%d\n",len);
+		printf("\033[H\033[2J");     //å°‡ç•«é¢æ¸…ç©ºï¼Œå¯ä½¿éŠæˆ²è¼ƒæµæš¢ 
+ 	    color(7); printf("\nç›®å‰åˆ†æ•¸:%d\n",len);
 	    op();
 	    color(7); printf("--------------------------");
- 	    color(7); printf("\n±o¤À~\n");
+ 	    color(7); printf("\nå¾—åˆ†~\n");
  	    Sleep(400);
  		len+=1;
    		while(1){
-			A_idxb=rand()%9;       //?¨ê·sÀH¾÷¦ì¸m 
+			A_idxb=rand()%9;       //?åˆ·æ–°éš¨æ©Ÿä½ç½® 
 			A_idxs=rand()%9;
 			if (ground[A_idxb][A_idxs]=='.'){
 		  	    break;
@@ -351,7 +351,7 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 	}
 	else{
 		if (ground[S_idxb][S_idxs]=='o'){
-			color(7); printf("\n§A¿é¤F QQ\n");
+			color(7); printf("\nä½ è¼¸äº† QQ\n");
 			END=1;
 		}
 	}
@@ -361,7 +361,7 @@ int move(char M){     //²¾°Êªº¦U¶µ¨ç¦¡
 }
 
 
-int main(){        //¥Dµ{¦¡ 
+int main(){        //ä¸»ç¨‹å¼ 
 	char ip;
 	for (i=0;i<=8;i++){
 		for(j=0;j<=8;j++){
@@ -373,7 +373,7 @@ int main(){        //¥Dµ{¦¡
 			jd_list[i][j]=-1;
 		}
 	}
-	srand(time(NULL));  //³]©w³DÀYªì©l¦ì¸m 
+	srand(time(NULL));  //è¨­å®šè›‡é ­åˆå§‹ä½ç½® 
 	S_idxb=rand()%8+1;
 	S_idxs=rand()%8+1;
 	while(1){;
@@ -383,58 +383,58 @@ int main(){        //¥Dµ{¦¡
 			break;
 		}
 	}
-	jd_list[0][0]=S_idxb; jd_list[0][1]=S_idxs;         //­è¶}©l®É¨­Åé¦b¥ª°¼ 
+	jd_list[0][0]=S_idxb; jd_list[0][1]=S_idxs;         //å‰›é–‹å§‹æ™‚èº«é«”åœ¨å·¦å´ 
 	jd_list[1][0]=S_idxb; jd_list[1][1]=S_idxs-1;
 	ground[S_idxb][S_idxs]='@';
 	ground[S_idxb][S_idxs-1]='o';
 	ground[A_idxb][A_idxs]='?';
-	printf("<< ³o¬O¤@­ÓÂ²³æªº³g­¹³D¹CÀ¸ >>\n<< ¾Ş±±³g­¹³D¡A¦Y¨ì°İ¸¹¡A¨Ã¹F¨ì30¤À!!!>>\n\n\n");
+	printf("<< é€™æ˜¯ä¸€å€‹ç°¡å–®çš„è²ªé£Ÿè›‡éŠæˆ² >>\n<< æ“æ§è²ªé£Ÿè›‡ï¼Œåƒåˆ°å•è™Ÿï¼Œä¸¦é”åˆ°30åˆ†!!!>>\n\n\n");
 	printf("*******************\n\n");
-	printf("P.S: ³o¬O³g­¹³Dªº¨­Åé©MÀY:");
+	printf("P.S: é€™æ˜¯è²ªé£Ÿè›‡çš„èº«é«”å’Œé ­:");
 	color(2); printf("o@  ");
-	color(7); printf("³o¬O§Aªº¥Ø¼Ğ: ");
+	color(7); printf("é€™æ˜¯ä½ çš„ç›®æ¨™: ");
 	color(4); printf("?\n\n");
 	color(7);
-	printf("¾Ş§@¤è¦¡ W:¤W A:¥ª S:¤U D:¥k U:ÁY¤p(¥u¯àÁY¤p¨ìªø«×³Ñ2) O:¥[ªø(¥u¯à¥[ªø¨ìªø«×¤p©óµ¥©ó15¡A¨Ã¥B¦³¾÷²v¥[ªø¥¢±Ñ)\n\n");
-	printf("³g­¹³D¥i¬ï±ôÀğ¾À¨âºİ(¨«¨ì³Ì¤W¤è·|¦^¨ì³Ì¤U¡A¨«¨ì³Ì¥ª¤è·|¶Ç¨ì³Ì¥k¡A¥H¦¹Ãş±À)\n\n");
-	printf("¦Y¨ì");
+	printf("æ“ä½œæ–¹å¼ W:ä¸Š A:å·¦ S:ä¸‹ D:å³ U:ç¸®å°(åªèƒ½ç¸®å°åˆ°é•·åº¦å‰©2) O:åŠ é•·(åªèƒ½åŠ é•·åˆ°é•·åº¦å°æ–¼ç­‰æ–¼15ï¼Œä¸¦ä¸”æœ‰æ©Ÿç‡åŠ é•·å¤±æ•—)\n\n");
+	printf("è²ªé£Ÿè›‡å¯ç©¿æ¢­ç‰†å£å…©ç«¯(èµ°åˆ°æœ€ä¸Šæ–¹æœƒå›åˆ°æœ€ä¸‹ï¼Œèµ°åˆ°æœ€å·¦æ–¹æœƒå‚³åˆ°æœ€å³ï¼Œä»¥æ­¤é¡æ¨)\n\n");
+	printf("åƒåˆ°");
 	color(4); printf("?");
-	color(7); printf("¥iÀò±o¤@¤À(¥[ªø¤@®æ)¡A¨Ã¥B·|­«·s¨ê·s");
+	color(7); printf("å¯ç²å¾—ä¸€åˆ†(åŠ é•·ä¸€æ ¼)ï¼Œä¸¦ä¸”æœƒé‡æ–°åˆ·æ–°");
 	color(4); printf("?  ");
-	color(7); printf("·íªø«×¹F¨ì10®æ«á¡A²¾°Ê®É");
-    color(4); printf("?");
-    color(7); printf("¤]·|°k¶]¡A¥[ªo!\n");
-    printf("\n*******************\n\n\n");
-    printf("«ö¥ô·NÁä¶}©l¹CÀ¸:");
-    getch();                           //¤£¥Î«öenterªº¿é¤Jªk 
-    printf("\033[H\033[2J");
-    color(7); printf("\n¥Ø«e¤À¼Æ:%d\n",len);
+	color(7); printf("ç•¶é•·åº¦é”åˆ°10æ ¼å¾Œï¼Œç§»å‹•æ™‚");
+    	color(4); printf("?");
+    	color(7); printf("ä¹Ÿæœƒé€ƒè·‘ï¼ŒåŠ æ²¹!\n");
+    	printf("\n*******************\n\n\n");
+    	printf("æŒ‰ä»»æ„éµé–‹å§‹éŠæˆ²:");
+    	getch();                           //ä¸ç”¨æŒ‰enterçš„è¼¸å…¥æ³• 
+    	printf("\033[H\033[2J");
+    	color(7); printf("\nç›®å‰åˆ†æ•¸:%d\n",len);
 	op();
 	color(7); printf("--------------------------");
 	while(1){
-		color(7); printf("½Ğ¿é¤J±zªº²¾°Ê¤è¦¡: ");
+		color(7); printf("è«‹è¼¸å…¥æ‚¨çš„ç§»å‹•æ–¹å¼: ");
 		ip=_getch();
 		move(ip);
 		if (len>=30){
 			printf("\033[H\033[2J");;
-			color(7); printf("\n¥Ø«e¤À¼Æ:%d\n",len);
+			color(7); printf("\nç›®å‰åˆ†æ•¸:%d\n",len);
 		    ground[A_idxb][A_idxs]='.';
 		    op();
-			color(7); printf("\n§AÄ¹¤F ¦n´Î´Î~\n");
+			color(7); printf("\nä½ è´äº† å¥½æ£’æ£’~\n");
 			break;
 		}
 		if ((END==0) && (RE==0)){
 			printf("\033[H\033[2J");
-			color(7); printf("\n¥Ø«e¤À¼Æ:%d\n",len);
+			color(7); printf("\nç›®å‰åˆ†æ•¸:%d\n",len);
 			op();
 			color(7); printf("--------------------------");
 		}
-		else if ((END==0) && (RE==1)){     //¿é¤J¿ù»~­«·s¿é¤J 
+		else if ((END==0) && (RE==1)){     //è¼¸å…¥éŒ¯èª¤é‡æ–°è¼¸å…¥ 
 			printf("--------------------------");
 			RE=0;
 		}
 		else if (END==1){           //End Game 
-			color(7); printf("\nÁ`¤À¬°:%d\n",len);
+			color(7); printf("\nç¸½åˆ†ç‚º:%d\n",len);
 			break;
 		}
 	}	
